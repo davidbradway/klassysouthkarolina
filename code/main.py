@@ -73,10 +73,10 @@ def search_list():
                 temp = json['results']['companies']
                 for company in temp:
                     name = company['company']['name']
+                    name = name.lower()
+
                     if name not in bad_k_names:
                         print(name)
-                        name = name.lower()
-
                         bad_k_names.append(name)
                         fname = './bad_k_names.pkl'
                         pkl_file = open(fname, 'wb')
@@ -87,11 +87,9 @@ def search_list():
             time.sleep(2)
 
 
-
 # Search these initial words to build a list of business names
 all_k_words = ['kabinet', 'kabinets', 'kamp', 'kamps', 'kampground', 'kampgrounds', 'kap', 'kaps', 'kapstone', 'kapstones', 'kar', 'kars', 'kare', 'kares', 'kat', 'kats', 'klan', 'kleen', 'kleeners', 'klub', 'klubs', 'klunker', 'klunkers', 'kolor', 'koncept', 'koncepts', 'konnection', 'konnections', 'korn', 'korner', 'korral', 'kosy', 'kount', 'kountry', 'kover', 'kovers', 'krab', 'kraft', 'kraftsmen', 'kraftsman', 'krazy', 'kreations', 'kreation', 'kreative', 'kunnection', 'kuntry', 'kupboard', 'kustom', 'kute', 'kuts', 'kut', 'kutts', 'kutt', 'kwik']
 search_list()
-
 
 # For each word in each business name, find all the k words
 for business in bad_k_names:
